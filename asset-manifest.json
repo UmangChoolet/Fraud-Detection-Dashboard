@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/fraud-detection-dashboard/static/css/main.bffc0891.css",
+    "main.js": "/fraud-detection-dashboard/static/js/main.4f116484.js",
+    "index.html": "/fraud-detection-dashboard/index.html",
+    "main.bffc0891.css.map": "/fraud-detection-dashboard/static/css/main.bffc0891.css.map",
+    "main.4f116484.js.map": "/fraud-detection-dashboard/static/js/main.4f116484.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bffc0891.css",
+    "static/js/main.4f116484.js"
+  ]
+}
