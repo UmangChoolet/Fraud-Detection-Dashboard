@@ -1,0 +1,4 @@
+flask
+flask-cors
+confluent-kafka
+psycopg2-binary

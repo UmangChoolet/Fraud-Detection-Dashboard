@@ -1,3 +1,0 @@
-confluent-kafka
-psycopg2-binary   # For PostgreSQL DB connection
-streamlit         # For dashboard
