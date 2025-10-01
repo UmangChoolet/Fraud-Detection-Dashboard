@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/fraud-detection-dashboard/static/css/main.bffc0891.css",
-    "main.js": "/fraud-detection-dashboard/static/js/main.4f116484.js",
-    "index.html": "/fraud-detection-dashboard/index.html",
-    "main.bffc0891.css.map": "/fraud-detection-dashboard/static/css/main.bffc0891.css.map",
-    "main.4f116484.js.map": "/fraud-detection-dashboard/static/js/main.4f116484.js.map"
+    "main.css": "/Fraud-Detection-Dashboard/static/css/main.bffc0891.css",
+    "main.js": "/Fraud-Detection-Dashboard/static/js/main.4f116484.js",
+    "index.html": "/Fraud-Detection-Dashboard/index.html",
+    "main.bffc0891.css.map": "/Fraud-Detection-Dashboard/static/css/main.bffc0891.css.map",
+    "main.4f116484.js.map": "/Fraud-Detection-Dashboard/static/js/main.4f116484.js.map"
   },
   "entrypoints": [
     "static/css/main.bffc0891.css",
