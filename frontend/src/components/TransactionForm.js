@@ -1,6 +1,7 @@
 // frontend/src/components/TransactionForm.js
 import React, { useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../config";
 
 export default function TransactionForm({ onSubmitted }) {
   const [userId, setUserId] = useState("");
@@ -22,7 +23,7 @@ export default function TransactionForm({ onSubmitted }) {
       };
 
       // Relative URL → React proxy (package.json) forwards to Flask backend
-      const res = await axios.post("/transactions/add", payload);
+      const res = await axios.post(`${API_BASE_URL}/transactions/add`, payload);
 
       alert(res.data.message || "Transaction submitted!");
       setUserId("");
