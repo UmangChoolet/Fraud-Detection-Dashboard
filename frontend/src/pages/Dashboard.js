@@ -6,6 +6,7 @@ import TopUsers from "../components/TopUsers";
 import DistributionPie from "../components/DistributionPie";
 import RecentFrauds from "../components/RecentFrauds";
 import TransactionForm from "../components/TransactionForm";
+import API_BASE_URL from "../config";
 
 export default function Dashboard() {
   const [summary, setSummary] = useState(null);
@@ -17,11 +18,11 @@ export default function Dashboard() {
   const fetchAll = async () => {
     try {
       const [s, a, t, d, r] = await Promise.all([
-        axios.get("/transactions/summary"),
-        axios.get("/frauds/alerts"),
-        axios.get("/users/top"),
-        axios.get("/transactions/distribution"),
-        axios.get("/frauds/recent"),
+        axios.get(`${API_BASE_URL}/transactions/summary`),
+        axios.get(`${API_BASE_URL}/frauds/alerts`),
+        axios.get(`${API_BASE_URL}/users/top`),
+        axios.get(`${API_BASE_URL}/transactions/distribution`),
+        axios.get(`${API_BASE_URL}/frauds/recent`),
       ]);
       setSummary(s.data);
       setAlertsOverTime(a.data);
