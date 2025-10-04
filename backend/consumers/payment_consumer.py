@@ -4,7 +4,11 @@ import time
 from confluent_kafka import Consumer, Producer
 from backend.database.db_handler import insert_transaction, update_transaction_status
 
-KAFKA_BROKER = "localhost:9092"
+# Redpanda Cloud Broker Config
+KAFKA_BROKER = "d3gnh3scvm0i0evg9fdg.any.ap-south-1.mpx.prd.cloud.redpanda.com:9092"
+SASL_USERNAME = "cGMDf8PA99i0pyJBNQjNSJrxQHEK2A0F"
+SASL_PASSWORD = "lXeyTqUHGMZyCz4C0iqh5mYFRhMvFfzu-Yzmr4R_sc3kpTON4VXol_3fwzKTqZxX"
+
 TOPICS = {
     "transactions": "transactions",
     "fraud_alerts": "fraud_alerts"
@@ -49,19 +53,29 @@ def start_consumer():
     consumer_config = {
         "bootstrap.servers": KAFKA_BROKER,
         "group.id": "payment-consumer-group",
-        "auto.offset.reset": "earliest"
+        "auto.offset.reset": "earliest",
+        "security.protocol": "SASL_SSL",
+        "sasl.mechanisms": "PLAIN",
+        "sasl.username": SASL_USERNAME,
+        "sasl.password": SASL_PASSWORD
     }
     consumer = Consumer(consumer_config)
     consumer.subscribe([TOPICS["transactions"]])
 
-    producer_config = {"bootstrap.servers": KAFKA_BROKER}
+    producer_config = {
+        "bootstrap.servers": KAFKA_BROKER,
+        "security.protocol": "SASL_SSL",
+        "sasl.mechanisms": "PLAIN",
+        "sasl.username": SASL_USERNAME,
+        "sasl.password": SASL_PASSWORD
+    }
     producer = Producer(producer_config)
 
     print("🚀 Payment Consumer started. Listening for transactions...\n")
 
     try:
         while True:
-            msg = consumer.poll(1.0)
+            msg = consumer.poll(2.0)  # slightly increased timeout for CPU efficiency
             if msg is None:
                 continue
             if msg.error():
@@ -77,7 +91,7 @@ def start_consumer():
             # Fraud detection
             is_fraud, reason = detect_fraud(transaction)
             if is_fraud:
-                # 🔹 Update DB to FAILED
+                # Update DB to FAILED
                 update_transaction_status(transaction["user_id"], transaction["amount"], "FAILED")
 
                 alert = {
