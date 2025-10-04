@@ -4,7 +4,14 @@ import json
 
 TOPIC = "transactions"
 
-conf = {"bootstrap.servers": "localhost:9092"}
+conf = {
+    "bootstrap.servers": "d3gnh3scvm0i0evg9fdg.any.ap-south-1.mpx.prd.cloud.redpanda.com:9092",
+    "sasl.mechanisms": "PLAIN",
+    "security.protocol": "SASL_SSL",
+    "sasl.username": "cGMDf8PA99i0pyJBNQjNSJrxQHEK2A0F",
+    "sasl.password": "lXeyTqUHGMZyCz4C0iqh5mYFRhMvFfzu-Yzmr4R_sc3kpTON4VXol_3fwzKTqZxX"
+}
+
 producer = Producer(conf)
 
 def delivery_report(err, msg):
