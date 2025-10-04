@@ -55,7 +55,7 @@ def start_consumer():
         "group.id": "payment-consumer-group",
         "auto.offset.reset": "earliest",
         "security.protocol": "SASL_SSL",
-        "sasl.mechanisms": "PLAIN",
+        "sasl.mechanisms": "SCRAM-SHA-256",
         "sasl.username": SASL_USERNAME,
         "sasl.password": SASL_PASSWORD
     }
@@ -65,7 +65,7 @@ def start_consumer():
     producer_config = {
         "bootstrap.servers": KAFKA_BROKER,
         "security.protocol": "SASL_SSL",
-        "sasl.mechanisms": "PLAIN",
+        "sasl.mechanisms": "SCRAM-SHA-256",
         "sasl.username": SASL_USERNAME,
         "sasl.password": SASL_PASSWORD
     }
