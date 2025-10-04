@@ -5,7 +5,7 @@ from producers.payment_producer import producer, delivery_report, TOPIC
 import json
 
 app = Flask(__name__)
-CORS(app, origins=["https://umangchoolet.github.io"], supports_credentials=True, methods=["GET","POST"])
+CORS(app, origins=["https://umangchoolet.github.io"])
 
 
 @app.route("/")
